@@ -51,7 +51,7 @@
         <table >
         
           <tr>
-            <th>주문1</th>
+            <th>주문2</th>
           </tr>
           <tr>
             <td>${purchaseCount.purchase_idx} <!-- 들어올 주문수 입력 !--></td>
