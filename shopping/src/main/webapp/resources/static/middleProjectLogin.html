@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 페이지</title>
+<link href="../css/middleProjectLogin.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<!-- 로그인 페이지 -->
+<body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/middleProjectLogin.js"></script>
+<div class="container">
+	<div class="child">
+<main id="content" class="contents">
+
+<h1>로그인</h1>
+
+
+<section class="signIn">
+	<div class="tabs">
+		<ul class="tab">
+			<li><a href="#tab1" id="Login"  class="on">회원</a></li>
+			<li><a href="#tab2" id="nonLogin" class="fon">비회원 (주문조회)</a></li>
+		</ul>
+		<div id="tab1" class="tab1">
+			<h2 class="wa_hidden"></h2>
+			<form action="/loginProcess" id="loginForm" method="post">
+				<input type="hidden" name="_csrf" value="">
+				 <input type="hidden" name="accessToken" id="accessToken" value="">
+				<input type="hidden" name="loginTarget" id="loginTarget" value="">
+				<input type="hidden" name="remember-me" id="autologin" value="true">
+				<input type="hidden" name="pageMode" value="false"> <input
+					type="hidden" name="naverConn" value="N">
+				<div class="signIn-form">
+					<div>
+						<div class="input_box">
+							<span class="skills"> <i class="reset_txt"></i>
+							</span> <label for="userId" class="wa_hidden"></label> <input
+								type="text" id="userId" name="userId" value=""
+								validate="required;xss2;" locale="ko" placeholder="아이디"
+								class="reset" title="아이디">
+						</div>
+						<div class="input_box">
+							<span class="skills"> <i class="show_pass"></i>
+							</span> <label for="password" class="wa_hidden"></label> <input
+								type="password" maxlength="20" name="password" id="password"
+								value="" validate="required" locale="ko" placeholder="비밀번호"
+								title="비밀번호">
+						</div>
+					</div>
+					<button type="button" id="loginbtn" name="loginbtn" onclick="login();">로그인</button>
+				</div>
+				<p id="idPText" class="invalid-txt"></p>
+
+				<div class="save_id">
+					<span class="checkbox"> <input class="checkBox"
+						type="checkbox" id="cb01" name="saveId" checked=""> <label
+						for="cb01"><i></i>아이디 저장</label>
+					</span>
+				</div>
+
+				<div class="link">
+					<a href="/public/member/searchMbrId">아이디 찾기</a> <a
+						href="/public/member/searchMbrId#pwd">비밀번호 찾기</a> <a
+						href="/public/member/addMemberStep1" class="colorDark">회원가입</a>
+
+				</div>
+
+				
+				<!-- <dl class="login_sns">
+					<dt>
+						<span>SNS 계정으로 로그인</span>
+					</dt>
+					<dd>
+						<a href="javascript:undefined;" id="oLoginKaKaoLink"
+							class="kakao box" title="새창열림">카카오 로그인</a><a
+							href="javascript:doLoginByNaver();" class="naver box"
+							title="새창열림">네이버 로그인</a>
+					</dd>
+				</dl>
+				start 네이버 로그인 
+				네이버아이디로로그인 버튼 노출 영역
+				<script type="text/javascript"
+					src="/v3/js/naver/naverLogin_implicit-1.0.2-min-HASH-ab9e391af2.js"
+					charset="utf-8"></script>
+				<div id="naver_id_login"></div>
+				<script type="text/javascript">
+                    var YOUR_CLIENT_ID = "";
+                </script>
+				<script type="text/javascript"
+					src="/v3/js/naver/naver_login-HASH-c890639567.js"></script>
+				end 네이버 로그인  -->
+			</form>
+		</div>
+
+
+
+		<!-- 비회원 주문조회 -->
+		<div id="tab2" > <!-- 토글 탭 기능 --> <!-- style="display: none;" -->
+			<h3 class="wa_hidden"></h3>
+			<form action="" method="post" id="nonMemberForm">
+				<input type="hidden" name="_csrf"
+					value="">
+				<div class="signIn-form2">
+					<div>
+						<div class="input_box">
+							<span class="skills"> <i class="reset_txt"></i>
+							</span> <label for="cstmrNm" class="wa_hidden"></label> 
+							<input name="cstmrNm" id="cstmrNm" value="" validate="required"
+								type="text" label="이름" placeholder="이름" class="reset" title="이름">
+						</div>
+						<div class="input_box">
+							<span class="skills"> <i class="reset_txt"></i>
+							</span> <label for="cstmrMobilNo" class="wa_hidden"></label> 
+							<input type="text" name="cstmrMobilNo" id="cstmrMobilNo" value=""
+								label="휴대폰 번호" validate="required;digit;minlength:10;"
+								maxlength="11" placeholder="휴대폰 번호(‘-’ 없이 입력)"
+								title="휴대폰 번호(‘-’ 없이 입력)">
+						</div>
+						<div class="input_box">
+							<span class="skills"> <i class="reset_txt"></i>
+							</span> <label for="ordNo" class="wa_hidden"></label> <input
+								type="text" class="inp_txt" name="ordNo" id="ordNo" value=""
+								validate="required" label="주문번호" placeholder="주문번호" title="주문번호">
+						</div>
+					</div>
+					<button type="button" id="guestbtn" name="guestbtn" onclick="authGuestRole();">주문/배송조회</button>
+				</div>
+				<p id="nonMemberPwarn" class="invalid-txt"></p>
+				<div class="link">
+					<a href="/public/member/searchMbrId">아이디 찾기</a> <a
+						href="/public/member/searchMbrId#pwd">비밀번호 찾기</a> <a
+						href="/public/member/addMemberStep1" class="colorDark">회원가입</a>
+
+				</div>
+				<div class="center_info">
+					<span>1599-0007</span> 평일(월~금)<strong> 09:00~18:00</strong> (주말 및 공휴일 휴무)
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</section>
+
+</main>
+</div>
+</div>
+</body>
+</html>

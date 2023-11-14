@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.header {
+  position: sticky;
+  top: 0px;
+  /* 도달했을때 고정시킬 위치 */
+  padding: 5px;
+
+
+  z-index: 10;
+}
+
+.container2 {
+  max-width: 960px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: -350px;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+
+
+
+header h1 {
+  font-size: 24px;
+  color: white;
+}
+
+
+.profile-info {
+  flex: 1;
+}
+
+.order-history {
+  margin-top: 30px;
+}
+
+.table {
+  width: 60%;
+  position: relative;
+  bottom: -200;
+  margin-top: 20px;
+}
+
+table {
+  width: 60%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  height: 60px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+}
+
+.logout {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.sidebar {
+  padding: 100px;
+  margin: 100px;
+}

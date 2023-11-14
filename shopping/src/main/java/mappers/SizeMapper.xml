@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SizeDAO">	
+	<insert id="insertSize" parameterType="SizeVO"> 
+
+	</insert>
+	
+	<update id="updateBoard" parameterType="AccessVO">
+		
+	</update>
+	
+	<delete id="deleteBoard" parameterType="AccessVO">
+		
+	</delete>
+	
+	<select id="getSize" parameterType="SizeVO" resultType="SizeVO">
+		select size_idx from size where size_val=#{size_val} and product_idx=#{product_idx}
+	</select>
+
+	<select id="getSizeList" resultType="SizeVO"  parameterType="hashmap">
+		select * from size
+		<if test="product_idx != null">
+			<where>
+				product_idx=#{product_idx}
+			</where>
+		</if>
+	</select>
+</mapper>

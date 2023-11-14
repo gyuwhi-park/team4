@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Div2DAO">
+	<insert id="insertDiv2" parameterType="Div2VO">
+		insert into div2
+		(div2_idx, div2_name, div1_idx) values (#{div2_idx}, 'test', 'T')
+	</insert>
+
+	<update id="updateBoard" parameterType="BoardVO">
+
+	</update>
+
+	<delete id="deleteBoard" parameterType="BoardVO">
+
+	</delete>
+
+	<select id="getBoard" parameterType="BoardVO"
+		resultType="BoardVO">
+
+	</select>
+
+	<select id="getDiv2List" resultType="Div2VO" parameterType="hashmap">
+		<if test="keyword != null">
+				select d.div1_idx div1_idx, div1_name, div2_idx, div2_name
+				from div2 d2 inner join div1 d
+				on d2.div1_idx = d.div1_idx
+				where div2_name like concat('%',#{keyword},'%')
+		</if>
+		<if test="keyword == null">
+			select * from div2
+			<if test="div1_idx != null">
+				<where>
+					div1_idx=#{div1_idx}
+				</where>
+			</if>
+		</if>
+	</select>
+</mapper>

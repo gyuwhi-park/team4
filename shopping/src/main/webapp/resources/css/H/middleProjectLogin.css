@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+/* 회원 & 비회원 조회하는 토글 탭 */
+
+
+
+/* 체크 박스 색상 변경 */
+input, progress {
+  accent-color: #7e00ff;
+}
+
+.contents h1 {
+    margin-bottom: 40px;
+    font-size: 40px;
+    line-height: 48px;
+    color: #111111;
+    text-align: center;
+}
+
+
+#content {
+	width: 800px;
+	height: 800px;
+	
+}
+
+
+.container {
+	
+	max-width: 1440px;
+    min-width: 1280px;
+    width: auto;
+    min-height: calc(155vh - 560px);
+    margin: -39px 0 auto;
+    padding: 80px var(--gap) 120px;
+    box-sizing: border-box;
+	justify-content: center;
+	/* 자식 요소(.child)를 중앙 정렬하기 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.child {
+	top: 50%;
+	left: 50%;
+	text-align:justify;
+}
+
+main {
+	display: block;
+}
+
+
+
+h2 { color: black;
+}
+
+li, ol, ul {
+    list-style: none;
+}
+
+li {
+	width: 422px;
+	height: 40px;
+	text-align: center;
+}
+
+.tabs .tab {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 4px solid #e5e5e5;
+}
+
+.signIn .tabs .tab>li>a {
+	color: #111;
+	border-color: #111;
+	font-weight: 700;
+}
+
+
+.signIn-form {
+	display: flex;
+	justify-content: center;
+    flex-wrap: wrap;
+}
+
+.signIn-form2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.signIn .save_id {
+    height: 20px;
+    margin-top: 20px;
+}
+
+.signIn .signIn-form input[type=text] {
+    height: 50px;
+    width: 250px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    solid: red;
+}
+
+.signIn .signIn-form input[type=password] {
+    height: 50px;
+    width: 250px;
+    line-height: 48px;
+}
+
+.signIn .signIn-form2 input[type=text] {
+    height: 50px;
+    width: 250px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    solid: red;
+}
+
+.signIn .signIn-form2 input[type=password] {
+    height: 50px;
+    width: 250px;
+    line-height: 48px;
+}
+
+
+.signIn .link {
+    display: flex;
+    justify-content: space-around;
+    height: 35px;
+    padding: 20px 50px;
+    margin-top: 40px;
+    background: #f7f7f7;
+ 	align-items: center;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Pretendard,sans-serif;
+    line-height: inherit;
+    color: inherit;
+    font-style: normal;
+    font-weight: inherit;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.tabs>div.on {
+	display: block;
+}
+
+.signIn .tabs>div {
+	padding-top: 60px;
+}
+
+
+#loginbtn {
+	background: black;
+	width: 138px;
+    padding: 0 10px;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+	border: none;
+}
+
+#guestbtn {
+	background: black;
+	width: 138px;
+    padding: 0 10px;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+    border: none;
+}
+
+button, label {
+    cursor: pointer;
+}
+
+.checkbox>label {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 10px;
+    font-size: var(--fontD);
+    line-height: var(--fontDL);
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    color: var(--gray900);
+}
+
+a { color: #111111;
+	text-align: center;
+	text-decoration: none;
+ }
+ 
+ 

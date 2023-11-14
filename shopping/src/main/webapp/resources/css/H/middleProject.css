@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+
+#pop {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	width: 50%;
+	height: 50%;
+	display: none;
+}
+
+#pop > article {
+	width: 700px;
+	height: 400px;
+	position: relative;
+	z-index: 2;
+	background: gray;
+
+	box-shadow: 3px 3px 5px black;
+	margin: auto;
+	cursor: pointer;
+	text-align: center;
+}
+
+.black {
+	background: rgba(0,0,0,0,6);
+}
+    
+/* 장바구니 */
+#cart {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    margin-left: 10px;
+    text-align: left;
+}
+    
+    /* 아래에 입력*/
+    
+    
+    
+    
+    
+/*    아래에 입력   */
+
+
+
+    

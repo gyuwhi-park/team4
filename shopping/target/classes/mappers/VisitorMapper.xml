@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visitorDAO">	
+	<insert id="insertVisitorCount" parameterType="VisitorVO">
+		insert into visitor (visit_date, visit_count) VALUES (DATE_FORMAT(sysdate(), '%y%m%d'), 1);
+	</insert>
+	
+	<update id="updateVisitorCount">
+		update visitor set visit_count = visit_count+1 where visit_date=DATE_FORMAT(sysdate(), '%y%m%d');
+	</update>
+	
+	<select id="selectVisitorCount" parameterType="VisitorVO" resultType="VisitorVO">
+		select * from visitor where visit_date = DATE_FORMAT(sysdate(), '%y%m%d')
+	</select>
+
+	<select id="selectVisitorList" resultType="VisitorVO"  parameterType="hashmap">
+		select * from visitor
+		<if test="(pre != null) and (post == null)">
+			<where>
+				<![CDATA[
+					visit_date >= pre				
+				]]>
+			</where>
+		</if>
+		<if test="(pre == null) and (post != null)">
+			<where>
+				<![CDATA[
+					visit_date <= post	
+				]]>
+			</where>
+		</if>
+		<if test="(pre != null) and (post != null)">
+			<where>
+				<![CDATA[
+					visit_date >= pre and visit_date <= post
+				]]>
+			</where>
+		</if>
+	</select>
+</mapper>

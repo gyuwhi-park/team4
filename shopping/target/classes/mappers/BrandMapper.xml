@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BrandDAO">	
+	<insert id="insertBrand" parameterType="BrandVO">
+		insert into brand (brand_idx, brand_name) VALUES (#{brand_idx}, 'test')
+	</insert>
+	
+	<update id="updateBoard" parameterType="BoardVO">
+		
+	</update>
+	
+	<delete id="deleteBoard" parameterType="BoardVO">
+		
+	</delete>
+	
+	<select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
+	
+	</select>
+
+	<select id="getBrandList" resultType="BrandVO" parameterType="hashmap">
+		select * from brand
+		<if test="#{keyword} != null">
+			<where>
+				brand_name like '%${keyword}%'
+			</where>
+		</if>
+	</select>
+</mapper>

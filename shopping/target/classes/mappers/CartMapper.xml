@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartDAO">   
+
+   <insert id="insertCart" parameterType="CartVO">
+      insert into cart(cart_count, product_idx, user_idx, color_idx, size_idx)
+      values(#{cart_count}, #{product_idx}, #{user_idx}, #{color_idx}, #{size_idx});
+   </insert>
+   
+   <insert id="insertMainCart" parameterType="CartVO">
+      insert into cart
+      (product_idx,user_idx,cart_count)
+               values
+      (#{product_idx},#{user_idx},#{cart_count})
+   </insert>
+   
+   <insert id="insertMyCart" parameterType="CartVO">
+      insert into cart
+      (product_idx, cart_count, user_idx)
+      values
+      (#{product_idx}, #{cart_count}, #{user_idx})
+   </insert>
+   
+   <update id="updateBoard" parameterType="BoardVO">
+      
+   </update>
+   
+   <delete id="deleteCart" parameterType="CartVO">
+      delete from cart where user_idx = #{user_idx} and product_idx = #{product_idx} 
+   </delete>
+   
+   <select id="selectCart" parameterType="CartVO" resultType="CartVO">
+      select c.*, p.product_name, p.product_price, s.size_val, c2.color_name 
+      from cart c 
+      inner join product p on c.product_idx = p.product_idx 
+      inner join size s on c.size_idx = s.size_idx 
+      inner join color c2 on c.color_idx = c2.color_idx 
+      where cart_idx = #{cart_idx}
+   </select>
+
+   <select id="getCartList" resultType="CartVO"  parameterType="hashmap">
+      select c.*, p.product_name, p.product_price, s.size_val, c2.color_name 
+      from cart c 
+      inner join product p on c.product_idx = p.product_idx 
+      inner join size s on c.size_idx = s.size_idx 
+      inner join color c2 on c.color_idx = c2.color_idx 
+      where user_idx = #{user_idx};
+   </select>
+</mapper>

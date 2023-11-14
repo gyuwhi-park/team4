@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ColorDAO">	
+	<insert id="insertColor" parameterType="ColorVO">
+
+	</insert>
+	
+	<update id="updateBoard" parameterType="BoardVO">
+		
+	</update>
+	
+	<delete id="deleteBoard" parameterType="BoardVO">
+		
+	</delete>
+	
+	<select id="getColor" parameterType="ColorVO" resultType="ColorVO">
+		select color_idx from color where color_name=#{color_name} and product_idx=#{product_idx}
+	</select>
+
+	<select id="getColorList" resultType="ColorVO"  parameterType="hashmap">
+		select * from color where product_idx = #{product_idx}
+<!--   select * from color where color_idx = #{color_idx}   -->
+	</select>
+</mapper>

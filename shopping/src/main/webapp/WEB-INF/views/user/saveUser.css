@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/* 경로 오류로 적용이 안되어 일단 html에 생성 */
+
+.divOne {
+	display: flex;
+}
+
+h3 {
+	color: red;
+}
+
+#input {
+	width: 300px;
+	height: 80px;
+	background-color: blue;
+	color: green;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Div3DAO">
+	<insert id="insertDiv3" parameterType="Div3VO">
+		insert into div3
+		(div3_idx, div3_name, div2_idx) values (#{div3_idx}, 'test', 'T01')
+	</insert>
+
+	<update id="updateBoard" parameterType="BoardVO">
+
+	</update>
+
+	<delete id="deleteBoard" parameterType="BoardVO">
+
+	</delete>
+
+	<select id="getDiv3" parameterType="Div3VO"	resultType="Div3VO">
+		SELECT d3.div3_idx, d3.div3_name, d2.div2_idx, d2.div2_name, d1.div1_idx, d1.div1_name 
+		FROM div3 d3 
+		INNER JOIN div2 d2 ON d3.div2_idx = d2.div2_idx 
+		INNER JOIN div1 d1 ON d2.div1_idx = d1.div1_idx 
+		WHERE d3.div3_idx = #{div3_idx}
+	</select>
+
+	<select id="getDiv3List" resultType="Div3VO"
+		parameterType="hashmap">
+		<if test="keyword != null">
+			select d.div1_idx div1_idx, div1_name, d2.div2_idx div2_idx, div2_name, div3_idx, div3_name
+			from div2 d2 inner join div1 d
+			on d2.div1_idx = d.div1_idx
+			inner join div3 d3
+			on d2.div2_idx = d3.div2_idx
+			where div3_name like concat('%',#{keyword},'%')
+		</if>
+		<if test="keyword == null">
+			select * from div3
+			<if test="div2_idx != null">
+				<where>
+					div2_idx = #{div2_idx}
+				</where>
+			</if>
+		</if>
+	</select>
+</mapper>

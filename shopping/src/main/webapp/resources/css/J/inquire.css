@@ -1,0 +1,39 @@
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  color: white;
+}
+
+.inquire_container {
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: -10px;
+}
+
+label,
+input,
+textarea {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  width: 800px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
