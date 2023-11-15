@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ReviewDAO">	
+<mapper namespace="ReviewDAO">
 	<insert id="insertReview" parameterType="ReviewVO">
-		insert into review ( review_score, review_content, review_date, product_idx, user_idx ) 
-		values( #{review_score}, #{review_content}, now(), #{product_idx}, #{user_idx})
+		insert into review (
+		review_score, review_content, review_date, product_idx, user_idx )
+		values( #{review_score}, #{review_content}, now(), #{product_idx},
+		#{user_idx})
 	</insert>
-	
+
 	<update id="updateBoard" parameterType="BoardVO">
-		
+
 	</update>
-	
+
 	<delete id="deleteBoard" parameterType="ReviewVO">
-		delete from review 
-		where user_idx = #{user_idx} and product_idx = #{product_idx} and review_idx = #{review_idx}
+		delete from review
+		where user_idx = #{user_idx} and product_idx = #{product_idx} and
+		review_idx = #{review_idx}
 	</delete>
-	
-	<select id="getBoard" parameterType="ReviewVO" resultType="ReviewVO">
-	
+
+	<select id="getBoard" parameterType="ReviewVO"
+		resultType="ReviewVO">
+
 	</select>
 
-	<select id="getReviewList" resultType="ReviewVO"  parameterType="hashmap">
-		 SELECT r.review_idx, r.review_score, r.review_content, r.review_date, p.product_idx, p.product_name, u.user_idx, u.user_id 
-		 FROM review r 
-		 INNER JOIN product p ON r.product_idx = p.product_idx 
-		 INNER JOIN user u ON r.user_idx = u.user_idx 
-		 WHERE p.product_idx = #{product_idx}
+	<select id="getReviewList" resultType="ReviewVO"
+		parameterType="hashmap">
+		<if test="product_idx == null">
+			select r.*, u.user_id user_id, p.product_name from review r
+inner join shopping.user u on r.user_idx = u.user_idx
+join shopping.product p on p.product_idx = r.product_idx
+		</if>
+		<if test="product_idx != null">
+			SELECT r.review_idx, r.review_score, r.review_content, r.review_date,
+			p.product_idx, p.product_name, u.user_idx, u.user_id
+			FROM review r
+			INNER JOIN product p ON r.product_idx = p.product_idx
+			INNER JOIN user u ON r.user_idx = u.user_idx
+			WHERE p.product_idx = #{product_idx}
+		</if>
 	</select>
-	
-	<select id="getReviewCount" resultType="ReviewVO" parameterType="ReviewVO">
+
+	<select id="getReviewCount" resultType="ReviewVO"
+		parameterType="ReviewVO">
 		select count(*) from review
 	</select>
-	
-	<select id="selectReviewCount" resultType="ReviewVO" parameterType="HashMap">
+
+	<select id="selectReviewCount" resultType="ReviewVO"
+		parameterType="HashMap">
 		select review_idx from review
 	</select>
-	
-	<select id="getMyReviewList" resultType="ReviewVO" parameterType="hashmap"> 
-		select review_content, review_date from review 
+
+	<select id="getMyReviewList" resultType="ReviewVO"
+		parameterType="hashmap">
+		select review_content, review_date from review
 	</select>
 </mapper>

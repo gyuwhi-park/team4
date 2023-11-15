@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ColorDAO">	
 	<insert id="insertColor" parameterType="ColorVO">
-
+		insert into color (color_name, product_idx) VALUES (#{color_name}, #{product_idx})
 	</insert>
 	
 	<update id="updateBoard" parameterType="BoardVO">

@@ -7,7 +7,6 @@ jQuery(($) => {
     $('#selectBrand').click(function (){
         let brand = $("#selectBrand option:selected");
         $('#category').val(categoryList[0]);
-
     })
 
     $('#addButton').click(function (){
@@ -73,9 +72,8 @@ jQuery(($) => {
                 $('#selectDiv3').empty();
 
                 $(result).each(function (){
-                    $('#selectDiv2').append("<option>"+$(this)[0]["div2_idx"]+"</option>");
+                    $('#selectDiv2').append("<option>"+$(this)[0]["div2_idx"]+" : "+$(this)[0]["div2_name"]+"</option>");
                 })
-
             }, error : err => {
                 alert("fail");
                 console.log(err);
@@ -94,7 +92,7 @@ jQuery(($) => {
                     $('#selectDiv3').empty();
 
                     $(result).each(function (){
-                        $('#selectDiv3').append("<option>"+$(this)[0]["div3_idx"]+"</option>");
+                        $('#selectDiv3').append("<option>"+$(this)[0]["div3_idx"]+" : "+$(this)[0]["div3_name"]+"</option>");
                     })
 
                     /*$(result).find('Div3VO').each(function (index){

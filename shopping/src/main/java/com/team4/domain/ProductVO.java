@@ -14,12 +14,21 @@ public class ProductVO {
 	private int product_count;
 	private int product_option;
 	private String brand_idx;
+	private String div1_idx;
+	private String div1_name;
+	private String div2_idx;
+	private String div2_name;
+	private String div3_name;
 	private String div3_idx;
 	private String brand_name;
-	private List<String> product_colorList;
-	private List<String> product_sizeList;
 	
 	
+	public String getDiv2_name() {
+		return div2_name;
+	}
+	public void setDiv2_name(String div2_name) {
+		this.div2_name = div2_name;
+	}
 	public String getProduct_idx() {
 		return product_idx;
 	}
@@ -56,6 +65,30 @@ public class ProductVO {
 	public void setBrand_idx(String brand_idx) {
 		this.brand_idx = brand_idx;
 	}
+	public String getDiv1_idx() {
+		return div1_idx;
+	}
+	public void setDiv1_idx(String div1_idx) {
+		this.div1_idx = div1_idx;
+	}
+	public String getDiv1_name() {
+		return div1_name;
+	}
+	public void setDiv1_name(String div1_name) {
+		this.div1_name = div1_name;
+	}
+	public String getDiv2_idx() {
+		return div2_idx;
+	}
+	public void setDiv2_idx(String div2_idx) {
+		this.div2_idx = div2_idx;
+	}
+	public String getDiv3_name() {
+		return div3_name;
+	}
+	public void setDiv3_name(String div3_name) {
+		this.div3_name = div3_name;
+	}
 	public String getDiv3_idx() {
 		return div3_idx;
 	}
@@ -68,24 +101,12 @@ public class ProductVO {
 	public void setBrand_name(String brand_name) {
 		this.brand_name = brand_name;
 	}
-	public List<String> getProduct_colorList() {
-		return product_colorList;
-	}
-	public void setProduct_colorList(List<String> product_colorList) {
-		this.product_colorList = product_colorList;
-	}
-	public List<String> getProduct_sizeList() {
-		return product_sizeList;
-	}
-	public void setProduct_sizeList(List<String> product_sizeList) {
-		this.product_sizeList = product_sizeList;
-	}
-	
 	@Override
 	public String toString() {
 		return "ProductVO [product_idx=" + product_idx + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_count=" + product_count + ", product_option=" + product_option
-				+ ", brand_idx=" + brand_idx + ", div3_idx=" + div3_idx + ", brand_name=" + brand_name
-				+ ", product_colorList=" + product_colorList + ", product_sizeList=" + product_sizeList + "]";
+				+ ", brand_idx=" + brand_idx + ", div1_idx=" + div1_idx + ", div1_name=" + div1_name + ", div2_idx="
+				+ div2_idx + ", div3_name=" + div3_name + ", div3_idx=" + div3_idx + ", brand_name=" + brand_name + "]";
 	}
+	
 }

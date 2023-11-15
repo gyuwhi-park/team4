@@ -186,6 +186,35 @@ public class AdminProductController {
       m.addAttribute("productList", result);
    }
    
+	@RequestMapping("/productColorInsert")
+	@ResponseBody
+	public String productColorInsert(ColorVO vo) {
+		System.out.println("--------------------------------------------------------------");
+		System.out.println("AdminProductController >> productColorInsert / vo : "+vo.toString());
+		Integer result = colorService.insertColor(vo);
+		if(result > 0) {
+			return "Success";			
+		} else {
+			System.out.println("input Error / result : "+result);
+			return "Fail";	
+		}
+	}
+	
+	@RequestMapping("/productSizeInsert")
+	@ResponseBody
+	public String productSizeInsert(SizeVO vo) {
+		System.out.println("--------------------------------------------------------------");
+		System.out.println("AdminProductController >> productSizeInsert / vo : "+vo.toString());
+		Integer result = sizeService.insertSize(vo);
+		System.out.println("AdminProductController >> productSizeInsert / result : "+result);
+		if(result > 0) {
+			return "Success";			
+		} else {
+			System.out.println("input Error / result : "+result);
+			return "Fail";	
+		}
+	}
+   
    @RequestMapping("/imageManage")
    public void productImageManage(ProductVO vo, Model m) {
       HashMap map = new HashMap();

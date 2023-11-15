@@ -17,8 +17,10 @@ public class ColorDAOImpl implements ColorDAO{
 
 	@Override
 	public Integer insertColor(ColorVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("ColorDAOImpl >> insertColor");
+		Integer result = mybatis.insert("ColorDAO.insertColor", vo);
+		System.out.println("ColorDAOImpl >> insertColor / result : "+result);
+		return result;
 	}
 
 	@Override

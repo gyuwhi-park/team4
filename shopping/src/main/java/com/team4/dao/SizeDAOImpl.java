@@ -17,8 +17,10 @@ public class SizeDAOImpl implements SizeDAO{
 
 	@Override
 	public Integer insertSize(SizeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("SizeDAOImpl >> insertSize");
+		Integer result = mybatis.insert("SizeDAO.insertSize",vo);
+		System.out.println("SizeDAOImpl >> insertSize / result : "+result);
+		return result;
 	}
 
 	@Override

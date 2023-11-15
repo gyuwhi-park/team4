@@ -34,10 +34,10 @@
 	<c:forEach items="${productList}" var="product">
 		<tr>
 			<td class="product_idx">${product.product_idx}</td>
-			<td></td>
-			<td></td>
-			<td>${product.div3_idx}</td>
-			<td>${product.brand_idx}</td>
+			<td>${product.div1_name}</td>
+			<td>${product.div2_name}</td>
+			<td>${product.div3_name}</td>
+			<td>${product.brand_name}</td>
 			<td>${product.product_name}</td>
 			<td>${product.product_price}</td>
 			<td>${product.product_option}</td>

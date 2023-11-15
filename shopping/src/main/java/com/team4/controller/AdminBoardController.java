@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team4.common.Security;
 import com.team4.domain.BoardVO;
+import com.team4.domain.ReviewVO;
 import com.team4.domain.UserVO;
 import com.team4.service.BoardService;
+import com.team4.service.ReviewService;
 import com.team4.service.UserService;
 
 @Controller
@@ -25,6 +27,9 @@ public class AdminBoardController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step, HttpSession session) {
@@ -54,6 +59,11 @@ public class AdminBoardController {
 		List<BoardVO> result = boardService.getBoardList(null);
 		System.out.println("AdminBoardController >> postManage / result : "+result);
 		m.addAttribute("boardList", result);
+		
+		System.out.println("AdminBoardController >> postManage");
+		List<ReviewVO> rResult = reviewService.getReviewList(null);
+		System.out.println("AdminBoardController >> postManage / rResult : "+rResult);
+		m.addAttribute("reviewList", rResult);
 		
 //		return Security.adminStateCheck(session, "admin/board/boardContent");
 	}

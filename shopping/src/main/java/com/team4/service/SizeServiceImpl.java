@@ -18,8 +18,10 @@ public class SizeServiceImpl implements SizeService {
 
 	@Override
 	public Integer insertSize(SizeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("SizeServiceImpl >> insertSize");
+		Integer result = sizeDAO.insertSize(vo);
+		System.out.println("SizeServiceImpl >> insertSize / result : "+result);
+		return result;
 	}
 
 	@Override

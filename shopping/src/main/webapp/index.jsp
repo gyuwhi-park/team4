@@ -8,8 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Main Page</title>
-<script src="https://code.jque
-ry.com/jquery-3.7.1.min.js"
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs
 	0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
