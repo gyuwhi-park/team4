@@ -308,12 +308,10 @@ public class MypageController {
 		}
 	} 
 	
-	
 	@RequestMapping("/cart")
 	public void myCart(HttpSession session, Model m) {
 		HashMap map = new HashMap();
 		map.put("user_idx", session.getAttribute("user_idx"));
-		System.out.println("MypageController >> myCart / map : "+map.toString());
 		List<CartVO> result = cartService.getCartList(map);
 		m.addAttribute("cartList", result);
 	}

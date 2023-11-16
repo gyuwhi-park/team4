@@ -5,7 +5,8 @@
 	<insert id="insertAddress" parameterType="AddressVO">
 		<if test="addr_addr != null">
 			<if test="addr_post != null"> 
-				insert into address (addr_addr, addr_post, user_idx) VALUES (#{addr_addr}, #{addr_post}, #{user_idx})
+				insert into address (addr_addr, addr_post, user_idx) 
+				VALUES (#{addr_addr}, #{addr_post}, #{user_idx})
 			</if>
 		</if>
 	</insert>

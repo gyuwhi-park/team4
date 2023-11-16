@@ -3,42 +3,48 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="purchaseDAO">
 	<insert id="insertPurchase" parameterType="purchaseVO">
-      insert into purchase(purchase_number, purchase_date, purchase_count, purchase_price, purchase_state, user_idx, product_idx, addr_idx)
-      values(#{purchase_number}, now(), #{purchase_count}, #{purchase_price}, "배송준비중", #{user_idx}, #{product_idx}, #{addr_idx})
-   </insert>
-
-
+		<!-- insert into purchase(purchase_number, purchase_date, purchase_count, 
+			purchase_price, purchase_state, user_idx, product_idx, addr_idx) values(#{purchase_number}, 
+			now(), #{purchase_count}, #{purchase_price}, "배송준비중", #{user_idx}, #{product_idx}, 
+			#{addr_idx}) -->
+		insert into purchase
+		(purchase_number, purchase_date, purchase_count, purchase_option, purchase_price,
+		purchase_state, user_idx, product_idx, addr_idx)
+		VALUES
+		(#{purchase_number}, now(), #{purchase_count}, null, #{purchase_price}, "배송준비중",
+		#{user_idx}, #{product_idx}, 1);
+	</insert>
 	<update id="updateBoard" parameterType="BoardVO">
 
 	</update>
-
 	<delete id="deleteBoard" parameterType="BoardVO">
 
 	</delete>
-	
 	<select id="getUserPurchaseList" resultType="PurchaseVO"
 		parameterType="hashmap">
-		select p.purchase_number, p.purchase_date, p.purchase_count, p.purchase_price, p.purchase_state, u.user_name, u.user_phone
+		select p.purchase_number, p.purchase_date,
+		p.purchase_count, p.purchase_price, p.purchase_state, u.user_name,
+		u.user_phone
 		from purchase p
-		inner join user u on p.user_idx = u.user_idx
+		inner join user u on p.user_idx =
+		u.user_idx
 		where u.user_idx = #{user_idx}
-		ORDER BY p.purchase_date DESC limit 1
+		ORDER BY p.purchase_date DESC
+		limit 1
 	</select>
-	
-	<select id="getPurchaseCount" parameterType="PurchaseVO" resultType="PurchaseVO"> 
-		select purchase_idx from purchase 
+	<select id="getPurchaseCount" parameterType="PurchaseVO"
+		resultType="PurchaseVO">
+		select purchase_idx from purchase
 	</select>
-	
-	<select id="getPurchase" parameterType="PurchaseVO" resultType="PurchaseVO">
+	<select id="getPurchase" parameterType="PurchaseVO"
+		resultType="PurchaseVO">
 		select * from purchase
 		where purchase_idx = #{purchase_idx}
 	</select>
-
 	<select id="getOrderCount" parameterType="PurchaseVO"
 		resultType="PurchaseVO">
 		select count(*) from purchase
 	</select>
-
 	<select id="getOrderList" resultType="PurchaseVO"
 		parameterType="HashMap">
 
@@ -47,17 +53,17 @@
 		ORDER BY purchase_idx DESC
 
 	</select>
-	
-	<select id="getOrder" parameterType="PurchaseVO" resultType="PurchaseVO">
-		
+
+	<select id="getOrder" parameterType="PurchaseVO"
+		resultType="PurchaseVO">
+
 		SELECT *
 		FROM purchase
 		WHERE purchase_idx=#{purchase_idx}
-	
+
 	</select>
 
-	<select id="selectPurchaseList" resultType="PurchaseVO"
-		parameterType="hashmap">
+	<select id="selectPurchaseList" resultType="PurchaseVO" parameterType="hashmap">
 		<if test="sort == 'static'">
 			select
 			purchase_date,
@@ -85,7 +91,6 @@
 					user_idx=#{user_idx}
 				</where>
 			</if>
-
 			<if test="sort != static">
 				<if test="toDate != null">
 					<if test="fromDate == null">
@@ -104,84 +109,91 @@
 			</if>
 		</if>
 	</select>
-	<select id="selectPurchaseCount" resultType="PurchaseVO" parameterType="hashmap">
+	
+	<select id="selectPurchaseCount" resultType="PurchaseVO"
+		parameterType="hashmap">
 		select purchase_idx from purchase
-	
+
 	</select>
-	
-	<select id="selectPurchaseDetail" resultType="PurchaseVO" parameterType="PurchaseVO">
+
+	<select id="selectPurchaseDetail" resultType="PurchaseVO"
+		parameterType="PurchaseVO">
 		select * from purchase
 	</select>
-	
-	<select id="getDateList" resultType="PurchaseVO" parameterType="hashmap">	
-	<!--  <if test="user_idx != null">  -->
-	<!--  select a.purchase_number, u.user_name, a.purchase_count, a.purchase_price, 
+
+	<select id="getDateList" resultType="PurchaseVO"
+		parameterType="hashmap">
+		<!-- <if test="user_idx != null"> -->
+		<!-- select a.purchase_number, u.user_name, a.purchase_count, a.purchase_price, 
 			u.user_name, u.user_phone from (select purchase_number, sum(purchase_count) 
 			purchase_count, sum(purchase_price) purchase_price, CAST(avg(user_idx) AS 
 			SIGNED INTEGER) user_idx from purchase group by purchase_number) a inner 
 			join purchase p on p.purchase_number = a.purchase_number inner join user 
-			u on a.user_idx = u.user_idx group by a.purchase_number;  -->
-	select pur.purchase_date purchase_date, pro.product_name product_name, pur.purchase_option purchase_option,pur.purchase_price purchase_price,a.addr_addr addr_addr,u.user_name user_name,a.addr_post addr_post 
-	from purchase pur 
-	inner join user u on pur.user_idx = u.user_idx 
-	inner join product pro on pur.product_idx = pro.product_idx 
-	inner join address a on u.user_idx = a.user_idx
-	<!--  where u.user_idx = ${user_idx}  -->
-	<!--  <if test="user_idx != null"> <where> user_idx=#{user_idx} </where>
-		</if>  -->
-    <if test="toDate != null">
-      <if test="fromDate == null">
-            <where>
+			u on a.user_idx = u.user_idx group by a.purchase_number; -->
+		select pur.purchase_date purchase_date, pro.product_name product_name,
+		pur.purchase_option purchase_option,pur.purchase_price
+		purchase_price,a.addr_addr addr_addr,u.user_name user_name,a.addr_post
+		addr_post
+		from purchase pur
+		inner join user u on pur.user_idx = u.user_idx
+		inner join product pro on pur.product_idx = pro.product_idx
+		inner join address a on u.user_idx = a.user_idx
+		<!-- where u.user_idx = ${user_idx} -->
+		<!-- <if test="user_idx != null"> <where> user_idx=#{user_idx} </where> 
+			</if> -->
+		<if test="toDate != null">
+			<if test="fromDate == null">
+				<where>
                <![CDATA[
                   purchase_date <= #{toDate}            
                ]]>
-            </where>
-         </if> 
-         <if test="fromDate != null">
-            <where>
-               purchase_date between #{fromDate} and #{toDate}
-            </where>
-         </if>
-      </if> 
+				</where>
+			</if>
+			<if test="fromDate != null">
+				<where>
+					purchase_date between #{fromDate} and #{toDate}
+				</where>
+			</if>
+		</if>
 	</select>
-	
-	<!-- orderlist 페이징  -->
-	<select id="pagingList" parameterType="java.util.HashMap" resultType="PurchaseVO">
-		
+
+	<!-- orderlist 페이징 -->
+	<select id="pagingList" parameterType="java.util.HashMap"
+		resultType="PurchaseVO">
+
 		select * from purchase order by purchase_date desc limit #{start}, #{limit};
-	
+
 	</select>
-	
+
 	<!-- 페이징 -->
 	<select id="purchasePageCount" resultType="Integer">
-		select count(*) from purchase
+		select count(*) from
+		purchase
 	</select>
-	
-	<select id="pagingDateList" parameterType="java.util.HashMap" resultType="PurchaseVO">
-		select * from purchase
-     <!--  <if test="user_idx != null">
-         <where>
-            user_idx=#{user_idx}
-         </where>
-      </if>-->
 
-      <if test="toDate != null">
-       <if test="fromDate == null">
-            <where>
+	<select id="pagingDateList" parameterType="java.util.HashMap"
+		resultType="PurchaseVO">
+		select * from purchase
+		<!-- <if test="user_idx != null"> <where> user_idx=#{user_idx} </where> 
+			</if> -->
+
+		<if test="toDate != null">
+			<if test="fromDate == null">
+				<where>
                <![CDATA[
                   purchase_date <= #{toDate}            
                ]]>
-            </where>
-         </if> 
-         <if test="fromDate != null">
-            <where>
-               purchase_date between #{fromDate} and #{toDate}
-            </where>
-         </if>
-      </if> 
-		
-        order by purchase_date desc limit #{start}, #{limit};
-	
+				</where>
+			</if>
+			<if test="fromDate != null">
+				<where>
+					purchase_date between #{fromDate} and #{toDate}
+				</where>
+			</if>
+		</if>
+
+		order by purchase_date desc limit #{start}, #{limit};
+
 	</select>
-	
+
 </mapper>

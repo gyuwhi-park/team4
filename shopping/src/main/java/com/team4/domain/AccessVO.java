@@ -4,8 +4,17 @@ public class AccessVO {
 	private int access_idx;
 	private String access_ip;
 	private String access_date;
+	private int access_count;
 	private int user_idx;
 	
+	
+	
+	public int getAccess_count() {
+		return access_count;
+	}
+	public void setAccess_count(int access_count) {
+		this.access_count = access_count;
+	}
 	public int getAccess_idx() {
 		return access_idx;
 	}
@@ -33,8 +42,7 @@ public class AccessVO {
 	@Override
 	public String toString() {
 		return "AccessVO [access_idx=" + access_idx + ", access_ip=" + access_ip + ", access_date=" + access_date
-				+ ", user_idx=" + user_idx + "]";
+				+ ", access_count=" + access_count + ", user_idx=" + user_idx + "]";
 	}
-	
 	
 }

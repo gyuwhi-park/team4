@@ -18,7 +18,7 @@
 	
 	</select>
 
-	<select id="getBoardList" resultType="AccessVO"  parameterType="hashmap">
-	
+	<select id="getAccessList" resultType="AccessVO"  parameterType="hashmap">
+		select access_date, count(user_idx) access_count from access group by access_date
 	</select>
 </mapper>

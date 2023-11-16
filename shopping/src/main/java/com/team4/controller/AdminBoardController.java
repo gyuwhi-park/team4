@@ -55,16 +55,10 @@ public class AdminBoardController {
 	
 	@RequestMapping("/postManage")
 	public void postManage(Model m, HttpSession session) {
-		System.out.println("AdminBoardController >> postManage");
 		List<BoardVO> result = boardService.getBoardList(null);
-		System.out.println("AdminBoardController >> postManage / result : "+result);
 		m.addAttribute("boardList", result);
 		
-		System.out.println("AdminBoardController >> postManage");
 		List<ReviewVO> rResult = reviewService.getReviewList(null);
-		System.out.println("AdminBoardController >> postManage / rResult : "+rResult);
 		m.addAttribute("reviewList", rResult);
-		
-//		return Security.adminStateCheck(session, "admin/board/boardContent");
 	}
 }

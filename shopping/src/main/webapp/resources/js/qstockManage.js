@@ -1,6 +1,5 @@
 jQuery(($) => {
     let countState = false;
-
     $("input.editCount").click(function (){
         let countTd = $(this).parents("tr").children(".product_count");
         let countInit = countTd.text();
@@ -37,3 +36,4 @@ jQuery(($) => {
         countState = !countState;
     })
 })
+

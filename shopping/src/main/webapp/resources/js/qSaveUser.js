@@ -16,7 +16,9 @@ jQuery(($) => {
 
     $('input').each(function (){
         $(this).click(function (){
-            if($('#ch2').is(':checked') & $('#ch3').is(':checked') & $('#ch4').is(':checked') & $('#ch5').is(':checked')){
+            if($('#ch2').is(':checked') & $('#ch3').is(':checked') &
+                $('#ch4').is(':checked') & $('#ch5').is(':checked')){
+
                 $('#ch1').prop('checked', true);
             } else {
                 $('#ch1').prop('checked', false);
@@ -31,6 +33,7 @@ jQuery(($) => {
             alert("필수 약관에 동의 해주셔야 합니다.");
         }
     })
+
     $('#user_birth').keyup(function (){
         if($(this).val().length === 8){
             $('#phone1').focus();

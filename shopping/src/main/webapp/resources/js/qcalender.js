@@ -4,9 +4,7 @@ jQuery(($) => {
     $('#searchFixedValue').css({
         cursor : "pointer"
     })
-
     $('span#today').text(today);
-
     $("#fromdate").datepicker({
         maxDate: 0,
         dateFormat : "yy-mm-dd", //연-월-일 형식으로 출력
@@ -14,7 +12,6 @@ jQuery(($) => {
             $("#todate").datepicker("option", "minDate", selectedDate);
         }//todate의 mindate의 값을 사용자가 지정한 값으로 설정 -> 선택된 날보다 이전 날짜 선택 불가
     });
-
     $("#todate").datepicker(
         {
             maxDate : 0,
@@ -23,7 +20,6 @@ jQuery(($) => {
                 $("#fromdate").datepicker("option", "maxDate", selectedDate);
             }//fromdate의 maxdate의 값을 사용자가 지정한 값으로 설정 -> 선택된 날보다 이후 날짜 선택 불가
         });
-
     $("#searchFixedValue td").click(function (){
         $('input#todate').val(today);
         let now = new Date();

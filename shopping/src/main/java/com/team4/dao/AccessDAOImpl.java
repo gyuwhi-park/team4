@@ -43,8 +43,10 @@ public class AccessDAOImpl implements AccessDAO{
 
 	@Override
 	public List<AccessVO> getAccessList(HashMap map) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("AccessDAOImpl >> getAccessList");
+		List<AccessVO> result = mybatis.selectList("AccessDAO.getAccessList", map);
+		System.out.println("AccessDAOImpl >> getAccessList / result : "+result);
+		return result;
 	}
 	
 }

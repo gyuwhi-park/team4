@@ -24,20 +24,13 @@ public class AdminPurchaseController {
 		System.out.println("load page : "+step);
 		return "admin/purchase/"+step;
 	}
+	
 	@RequestMapping("/inquire")
 	public void adminPurchaseInquire(String fromDate, String toDate, Model m) {
 		HashMap map = new HashMap();
 		map.put("fromDate", fromDate);
 		map.put("toDate", toDate);
-		System.out.println("AdminPurchaseController >> adminPurchaseInquire / map : "+map.toString());
 		List<PurchaseVO> result = purchaseService.getPurchaseList(map);
-		System.out.println("AdminPurchaseController >> adminPurchaseInquire / result : "+result);
 		m.addAttribute("purchaseList", result);
 	}
-	
-	/*
-	 * @RequestMapping("/purchase/dashboard") public void adminPurchaseDashBoard(){}
-	 * 
-	 * @RequestMapping("/product/dashboard") public void adminProductDashboard() {}
-	 */
 }

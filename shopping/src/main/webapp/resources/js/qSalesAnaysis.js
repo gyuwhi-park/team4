@@ -12,13 +12,7 @@ jQuery(($) => {
         let divVal = ($(this).text())/10000;
         priceList.push(divVal);
     })
-
-    // console.log(dateList);
-    // console.log(countList);
-    // console.log(priceList);
-
     const accessAnalysis = document.getElementById('accessAnalysis');
-
     new Chart(accessAnalysis, {
         type: 'line',
         data: {

@@ -15,8 +15,6 @@ jQuery(($) => {
                     $("#sizeList").append("<option value="+sizeVal+">"+sizeVal+"</option>")
                     $(this).val("");
                 }, error : err => {
-                    // alert("fail");
-                    // console.log(err);
                 }
             })
         }

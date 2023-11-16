@@ -15,32 +15,27 @@ jQuery(($) => {
         let url = '';
         let idx_val = $('#idx').val();
         let text_val = $('#text').val();
-
         switch (category){
             //브랜드
             case categoryList[0] :
                 data = {sort : 'brand', brand_idx : idx_val, brand_name : text_val};
                 url = 'addBrand';
                 break;
-
             //대분류
             case categoryList[1] :
                 data = {sort : 'div1', div1_idx : idx_val, div1_name : text_val};
                 url = 'addDiv1';
                 break;
-
             //중분류
             case categoryList[2] :
                 data = {sort : 'div2', div2_idx : idx_val, div2_name : text_val, div1_idx : $("#selectDiv1 option:selected").val()};
                 url = 'addDiv2';
                 break;
-
             //소분류
             case categoryList[3] :
                 data = {sort : 'div3', div3_idx : idx_val, div3_name : text_val, div2_idx : $("#selectDiv2 option:selected").val()};
                 url = 'addDiv3';
         }
-
         $.ajax({
             data : data,
             url : url,
@@ -58,7 +53,6 @@ jQuery(($) => {
     })
 
     $('#selectDiv1').click(function (){
-
         let div1 = $("#selectDiv1 option:selected");
         $('#category').val(categoryList[2])
         $.ajax({
@@ -137,39 +131,6 @@ jQuery(($) => {
 $('button#orderConfirm').click(function (){
     console.log($(this))
     alert($(this).prev().val());
-})
-
-jQuery(($) => {
-    $(this).click(function (){
-        let data = {product_idx : $(this).prev().val()};
-        // console.log(data);
-
-        /*$.ajax({
-            type : 'get',
-            data : data,
-            datatype: 'json',
-            url : "getProductDetail",
-            success : result => {
-                alert("success");
-                console.log(result);
-                $('object').text(result["purchase_idx"])
-
-            }, error : err => {
-                alert("fail");
-                console.log(err);
-            }
-        })*/
-    })
-    var fileNo = 0;
-    var filesArr = new Array();
-
-    function addFile(obj){
-        var fileNo = 0;
-        var filesArr = new Array();
-
-
-    }
-
 })
 
 //imageManage -> 다중 업로드 처리

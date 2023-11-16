@@ -5,7 +5,7 @@ public class VisitorVO {
 	private String visit_date;
 	private int visit_count;
 	private String product_idx;
-	
+	private String product_name;
 	public int getVisitor_idx() {
 		return visitor_idx;
 	}
@@ -30,11 +30,15 @@ public class VisitorVO {
 	public void setProduct_idx(String product_idx) {
 		this.product_idx = product_idx;
 	}
-	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
 	@Override
 	public String toString() {
 		return "VisitorVO [visitor_idx=" + visitor_idx + ", visit_date=" + visit_date + ", visit_count=" + visit_count
-				+ ", product_idx=" + product_idx + "]";
+				+ ", product_idx=" + product_idx + ", product_name=" + product_name + "]";
 	}
-	
 }

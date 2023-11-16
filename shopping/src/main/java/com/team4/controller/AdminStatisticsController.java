@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team4.domain.AccessVO;
 import com.team4.domain.PurchaseVO;
 import com.team4.domain.VisitorVO;
+import com.team4.service.AccessService;
 import com.team4.service.PurchaseService;
 import com.team4.service.VisitorService;
 
@@ -21,6 +23,9 @@ public class AdminStatisticsController {
 
 	@Autowired
 	private VisitorService visitorService;
+	
+	@Autowired
+	private AccessService accessService;
 
 	@Autowired
 	private PurchaseService purchaseService;
@@ -32,11 +37,11 @@ public class AdminStatisticsController {
 	}
 
 	@RequestMapping("accessAnalysis")
-	public List<VisitorVO> adminStaticsAccess(Model m) {
+	public List<AccessVO> adminStaticsAccess(Model m) {
 		//		System.out.println("AdminStatcsController >> adminStaticsAccess");
-		List<VisitorVO> result = visitorService.getVisitorList(null);
+		List<AccessVO> result = accessService.getAccessList(null);
 		//		System.out.println("AdminStatcsController >> adminStaticsAccess / result : "+result);
-		m.addAttribute("dateList", result);
+		m.addAttribute("accessList", result);
 		return result;
 	}
 
@@ -65,6 +70,15 @@ public class AdminStatisticsController {
 		List<PurchaseVO> result = purchaseService.getPurchaseList(map);
 		System.out.println("AdminStatcsController >> salesAnalysis / result : "+result);
 		m.addAttribute("purchaseStatics", result);
+		//		return result;
+	}
+	
+	@RequestMapping("productAnalysis")
+	public void productAnalysis(Model m){
+		System.out.println("AdminStatcsController >> productAnalysis");
+		List<VisitorVO> result = visitorService.getVisitorList(null);
+		System.out.println("AdminStatcsController >> productAnalysis / result : "+result);
+		m.addAttribute("accessList", result);
 		//		return result;
 	}
 }

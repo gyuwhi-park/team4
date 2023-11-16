@@ -128,23 +128,12 @@ public class GeneralControll {
       if (keyword != null) {
          HashMap map = new HashMap();
          map.put("keyword", keyword);
-         System.out.println("keyword : " + map.toString());
-         System.out.println("SearchController >> searchPage");
 
          List<BrandVO> bResult = brandService.getBrandList(map);
-         System.out.println("SearchController >> searchPage /bresult : " + bResult);
-
          List<Div1VO> result1 = div1Service.getDiv1List(map);
-         System.out.println("SearchController >> searchPage /result1 : " + result1);
-
          List<Div2VO> result2 = div2Service.getDiv2List(map);
-         System.out.println("SearchController >> searchPage /result2 : " + result2);
-
          List<Div3VO> result3 = div3Service.getDiv3List(map);
-         System.out.println("SearchController >> searchPage /result3 : " + result3);
-
          List<ProductVO> pResult = productService.getProductList(map);
-         System.out.println("SearchController >> searchPage /pResult : " + pResult);
 
          m.addAttribute("brandList", bResult);
          m.addAttribute("div1List", result1);
@@ -160,9 +149,7 @@ public class GeneralControll {
             user_idx = (Integer) session.getAttribute("user_idx");
             svo.setUser_idx(user_idx);
          }
-         //         System.out.println("SearchController >> searchPage / svo : "+svo.toString());
          Integer sResult = searchService.insertSearch(svo);
-         //         System.out.println("SearchController >> searchPage /sResult : "+sResult);
 
          HashMap sMap = new HashMap();
          if (user_idx != null) {
@@ -175,29 +162,23 @@ public class GeneralControll {
 
    @RequestMapping("/purchase")
    public void purchase(String cart, Model m, HttpSession session) {
-      System.out.println("cart : "+cart);
       String[] cartList = cart.split("a");
       List<CartVO> prePurchaseList = new ArrayList();
 
       for(String purchase : cartList) {
          CartVO vo = new CartVO();
          vo.setCart_idx(Integer.parseInt(purchase));
-//         System.out.println("GeneralControll >> purchase / vo : "+vo.toString());
          CartVO result = cartService.getCart(vo);
-//         System.out.println("GeneralControll >> purchase / result : "+result);
          prePurchaseList.add(result);
       }
       
       UserVO uvo = new UserVO();
       uvo.setUser_idx((Integer)session.getAttribute("user_idx"));
-      System.out.println("uvo : "+uvo.toString());
       UserVO uResult = userService.getUser(uvo);
-      System.out.println("uResult : "+uResult);
       
       AddressVO avo = new AddressVO();
       avo.setUser_idx(uvo.getUser_idx());
       AddressVO aResult = addressService.getAddress(avo);
-      System.out.println("aResult : "+aResult);
       
       m.addAttribute("prePurchaseList", prePurchaseList);
       m.addAttribute("userInfo", uResult);

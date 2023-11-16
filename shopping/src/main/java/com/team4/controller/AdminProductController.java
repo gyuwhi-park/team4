@@ -177,12 +177,10 @@ public class AdminProductController {
          return "Fail";         
       }
    }
+   
    @RequestMapping("/productManage")
    public void productManage(Model m) {
-      System.out.println("--------------------------------------------------------------");
-      System.out.println("AdminProductController >> productManage");      
       List<ProductVO> result = productService.getProductList(null);
-      System.out.println("AdminProductController >> productManage / result : "+result);
       m.addAttribute("productList", result);
    }
    
@@ -218,10 +216,9 @@ public class AdminProductController {
    @RequestMapping("/imageManage")
    public void productImageManage(ProductVO vo, Model m) {
       HashMap map = new HashMap();
-      map.put("product_idx", vo.getProduct_idx());
-      System.out.println("AdminProductController >> productImageManage / map : "+map.toString());      
+      map.put("product_idx", vo.getProduct_idx());      
       List<ImageVO> result = imageService.getImageList(map);
-      System.out.println("AdminProductController >> productImageManage / result : "+result);
+      
       m.addAttribute("product_idx", vo.getProduct_idx());
       m.addAttribute("product_name", vo.getProduct_name());
       m.addAttribute("productImageList", result);

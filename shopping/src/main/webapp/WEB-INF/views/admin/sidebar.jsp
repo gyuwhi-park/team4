@@ -148,7 +148,6 @@ th {
 												data-parent="#accordionExample">
 												<div class="card-body">
 													<ul>
-														<li><a href="${adminPath}purchase/dashboard">주문 대시보드</a></li>
 														<li><a href="${adminPath}purchase/inquire">전체 주문 조회</a></li>
 													</ul>
 												</div>
@@ -162,13 +161,10 @@ th {
 												data-parent="#accordionExample">
 												<div class="card-body">
 													<ul>
-														<li><a href="${adminPath}product/dashboard">상품 대시보드</a></li>
 														<li><a href="${adminPath}product/register">상품 등록</a></li>
 														<li><a href="${adminPath}product/productManage">상품 관리</a></li>
 														<li><a href="${adminPath}product/categoryManage">분류 관리</a></li>
-														<li><a href="${adminPath}product/displayManage">상품 진열</a></li>
 														<li><a href="${adminPath}product/stockManage">재고 관리</a></li>
-														<li><a href="${adminPath}product/optionManage">상품 옵션 관리</a></li>
 													</ul>
 												</div>
 											</div>
@@ -181,7 +177,6 @@ th {
 												data-parent="#accordionExample">
 												<div class="card-body">
 													<ul>
-														<li><a href="${adminPath}user/dashboard">고객 대시보드</a></li>
 														<li><a href="${adminPath}user/inquire">회원 조회</a></li>
 														<li><a href="${adminPath}user/userManage">회원 관리</a></li>
 													</ul>
@@ -196,7 +191,6 @@ th {
 												data-parent="#accordionExample">
 												<div class="card-body">
 													<ul>
-														<li><a href="${adminPath}board/dashboard">게시판 대시보드</a></li>
 														<li><a href="${adminPath}board/boardManage">게시판 관리</a></li>
 														<li><a href="${adminPath}board/postManage">게시물 관리</a></li>
 													</ul>
@@ -211,7 +205,6 @@ th {
 												data-parent="#accordionExample">
 												<div class="card-body">
 													<ul>
-														<li><a href="${adminPath}statistics/dashboard">통계 대시보드</a></li>
 														<li><a href="${adminPath}statistics/salesAnalysis?sort=static">매출 분석</a></li>
 														<li><a href="${adminPath}statistics/productAnalysis">상품 분석</a></li>
 														<li><a href="${adminPath}statistics/userAnalysis">고객 분석</a></li>

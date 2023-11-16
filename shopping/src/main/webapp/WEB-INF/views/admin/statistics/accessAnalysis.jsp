@@ -10,9 +10,10 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
-<script type="text/javascript" src="../../../../resources/js/qUserAnalysis.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="text/javascript"
+	src="../../../../resources/js/qUserAnalysis.js"></script>
 
 <title>Insert title here</title>
 </head>
@@ -20,19 +21,22 @@
 	<%@ include file="../header.jsp"%>
 	<%@ include file="../sidebar.jsp"%>
 	<div id="mainContent">
-
+		<div>
+			<canvas id="myChart"></canvas>
+		</div>
+		<br>
+		<hr>
+		<br>
 		<table>
-			<c:forEach items="${dateList}" var="date">
+			<c:forEach items="${accessList}" var="access">
 				<tr>
-					<td class="visit_date">${date.visit_date}</td>
-					<td class="visit_count">${date.visit_count}</td>
+					<td class="visit_date">${access.access_date}</td>
+					<td class="visit_count">${access.access_count}</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<hr>
-		<div>
-			<canvas id="myChart"></canvas>
-		</div>
+
 		<hr>
 	</div>
 

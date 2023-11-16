@@ -38,19 +38,14 @@ public class AdminUserController {
 	}
 	
 	@RequestMapping("/inquire")
-	public List<UserVO> userInquire(Model m) {
-//		System.out.println("AdminUserController >> userManage");
+	public void userInquire(Model m) {
 		List<UserVO> result = userService.getUserList(null);
-//		System.out.println("AdminUserController >> userManage / result : "+result);
 		m.addAttribute("userList", result);
-		return result;
 	}
 	
 	@RequestMapping("/userManage")
 	public void userManage(UserVO vo, Model m) {
-		System.out.println("AdminUserController >> userManage / vo : "+vo.getUser_idx());
 		UserVO uResult = userService.getUser(vo);
-		System.out.println("AdminUserController >> userManage / uResult : "+uResult);
 		if(uResult == null) {
 			m.addAttribute("secession", "비회원");
 			return;
@@ -59,23 +54,17 @@ public class AdminUserController {
 		
 		SecessionVO svo = new SecessionVO();
 		svo.setUser_idx(vo.getUser_idx());
-		System.out.println("AdminUserController >> userManage / svo : "+svo.getUser_idx());
 		SecessionVO sResult = secessionService.getSecession(svo);
 		
 		if(sResult == null) {
-			System.out.println("AdminUserController >> userManage / sResult : null");
 			m.addAttribute("secession", "회원");
 		} else {
-			System.out.println("AdminUserController >> userManage / sResult : "+sResult.toString());
 			m.addAttribute("secession", "탈퇴");
 		}
 		
-		
 		HashMap map = new HashMap();
 		map.put("user_idx", vo.getUser_idx());
-//		System.out.println("AdminUserController >> userManage / map : "+map.get("user_idx"));
 		List<PurchaseVO> pResult = purchaseService.getPurchaseList(map);
-//		System.out.println("AdminUserController >> userManage / pResult : "+pResult);
 		m.addAttribute("productList", pResult);
 	}
 }

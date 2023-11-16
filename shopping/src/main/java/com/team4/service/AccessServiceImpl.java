@@ -43,8 +43,10 @@ public class AccessServiceImpl implements AccessService{
 
 	@Override
 	public List<AccessVO> getAccessList(HashMap map) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("AccessServiceImpl >> getAccessList");
+		List<AccessVO> result = accessDAO.getAccessList(map);
+		System.out.println("AccessServiceImpl >> getAccessList");
+		return result;
 	}
 
 }

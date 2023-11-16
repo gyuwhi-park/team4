@@ -46,10 +46,10 @@
 			</table>
 			​ 오늘 날짜 : <span id="today"></span> ​
 			<form action="">
-				<label for="fromDate">시작일</label> <input type="text" name="fromDate"
-					id="fromdate"> ~ <label for="teDate">종료일</label> <input
-					type="text" name="toDate" id="todate"> <input type="submit"
-					value="조회">
+				<label for="fromDate">시작일</label>
+				<input type="text" name="fromDate" id="fromdate"> ~ 
+				<label for="teDate">종료일</label>
+				<input type="text" name="toDate" id="todate"> <input type="submit" value="조회">
 			</form>
 		</div>
 		<div>

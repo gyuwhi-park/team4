@@ -7,8 +7,6 @@ jQuery(($) => {
     $('td[class="visit_count"]').each(function (){
         countList.push($(this).text());
     })
-    // console.log(dateList);
-    // console.log(countList);
 
     const ctx = document.getElementById('myChart');
 
@@ -31,3 +29,4 @@ jQuery(($) => {
         }
     });
 })
+
